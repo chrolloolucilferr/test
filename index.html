@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Your Fitness Companion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/dumbbell.svg" alt="FitTrack Logo" class="logo">
+            <span>FitTrack</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#dashboard" class="active">Dashboard</a></li>
+            <li><a href="#workouts">Workouts</a></li>
+            <li><a href="#nutrition">Nutrition</a></li>
+            <li><a href="#goals">Goals</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="dashboard" class="section active">
+            <h1>Dashboard</h1>
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <h3>Today's Stats</h3>
+                    <div class="stat">
+                        <span class="stat-value" id="calories-burned">0</span>
+                        <span class="stat-label">Calories Burned</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="calories-consumed">0</span>
+                        <span class="stat-label">Calories Consumed</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <h3>Weekly Progress</h3>
+                    <canvas id="weekly-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="workouts" class="section">
+            <h1>Workouts</h1>
+            <div class="workout-form">
+                <h3>Log Workout</h3>
+                <form id="workout-form">
+                    <div class="form-group">
+                        <label for="workout-type">Type</label>
+                        <select id="workout-type" required>
+                            <option value="cardio">Cardio</option>
+                            <option value="strength">Strength Training</option>
+                            <option value="yoga">Yoga</option>
+                            <option value="hiit">HIIT</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Duration (minutes)</label>
+                        <input type="number" id="duration" required min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="calories">Calories Burned</label>
+                        <input type="number" id="calories" required min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Notes</label>
+                        <textarea id="notes"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Log Workout</button>
+                </form>
+            </div>
+            <div class="workout-history">
+                <h3>History</h3>
+                <div id="workout-list"></div>
+            </div>
+        </section>
+
+        <section id="nutrition" class="section">
+            <h1>Nutrition</h1>
+            <div class="nutrition-form">
+                <h3>Log Meal</h3>
+                <form id="nutrition-form">
+                    <div class="form-group">
+                        <label for="meal-type">Meal Type</label>
+                        <select id="meal-type" required>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snack">Snack</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="food-name">Food Name</label>
+                        <input type="text" id="food-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="food-calories">Calories</label>
+                        <input type="number" id="food-calories" required min="0">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="protein">Protein (g)</label>
+                            <input type="number" id="protein" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="carbs">Carbs (g)</label>
+                            <input type="number" id="carbs" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="fat">Fat (g)</label>
+                            <input type="number" id="fat" min="0">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Log Meal</button>
+                </form>
+            </div>
+            <div class="nutrition-history">
+                <h3>Today's Meals</h3>
+                <div id="meal-list"></div>
+            </div>
+        </section>
+
+        <section id="goals" class="section">
+            <h1>Goals</h1>
+            <div class="goals-form">
+                <h3>Set New Goal</h3>
+                <form id="goal-form">
+                    <div class="form-group">
+                        <label for="goal-type">Goal Type</label>
+                        <select id="goal-type" required>
+                            <option value="weight">Weight</option>
+                            <option value="workout">Workout</option>
+                            <option value="nutrition">Nutrition</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="goal-title">Title</label>
+                        <input type="text" id="goal-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goal-target">Target</label>
+                        <input type="text" id="goal-target" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goal-date">Target Date</label>
+                        <input type="date" id="goal-date" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Set Goal</button>
+                </form>
+            </div>
+            <div class="goals-list">
+                <h3>Active Goals</h3>
+                <div id="goals-list"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
